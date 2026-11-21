@@ -46,13 +46,15 @@ services:
   worker:
     build: .
     container_name : a2a-worker
+    ports:
+      - "8000:8000"
     working_dir: /app
     volumes: 
       - ./src:/app/src
     environment:
       OLLAMA_URL: http://ollama:11434
       POSTGRES_URL: postgresql://a2a:a2a@postgres:5432/a2a    
-    command: uvicorn worker:app --host 0.0.0.0 --port 8000 --app-dir src --reload --reload-dir src
+    command: uvicorn a2a_server:app --host 0.0.0.0 --port 8000 --app-dir src --reload --reload-dir src
     depends_on:
       ollama:
         condition: service_healthy

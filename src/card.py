@@ -32,3 +32,7 @@ AGENT_CARD = {
     }
   ],
 }
+
+# securitySchemes : 내가 사용할 수 있는 인증 방법을 정의
+# securityRequirements : 실제 요청에 요구하는 인증 방법
+
